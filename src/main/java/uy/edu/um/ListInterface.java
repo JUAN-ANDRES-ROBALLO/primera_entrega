@@ -1,19 +1,19 @@
 package uy.edu.um;
 
 public interface ListInterface<T>{
-    public void add(T value);
+    void add(T value);
 
-    public void addToBeginning(T value);
+    T get(int position);
 
-    public T get(int position) throws IndexOutOfBoundsException;
+    boolean contains(T value);
 
-    public boolean contains(T value);
+    void remove(T value);
 
-    public void remove(T value);
+    int size();
 
-    public int size();
+    listNode<T> getFirst();
 
-    public listNode<T> getFirst();
+    boolean isEmpty();
 }
 
 
