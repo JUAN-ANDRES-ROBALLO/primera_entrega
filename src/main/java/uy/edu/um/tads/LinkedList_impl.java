@@ -37,7 +37,10 @@ public class LinkedList_impl <T> implements ListInterface<T> {
     }
 
     @Override
-    public T get(int position) {
+    public T get(int position) throws InvalidArgumentException {
+        if (position<0)
+            throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
+
         T valueToReturn = null;
         int tempPosition = 0;
         listNode<T> temp = this.first;
@@ -56,10 +59,11 @@ public class LinkedList_impl <T> implements ListInterface<T> {
 
 
             valueToReturn = temp.getValue();
+            return valueToReturn;
 
         }
+        throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
 
-        return valueToReturn;
     }
 
 
@@ -164,19 +168,25 @@ public class LinkedList_impl <T> implements ListInterface<T> {
 
     }
 
-    public void setValue(int position, T val) {
+    public void setValue(int position, T val) throws InvalidArgumentException {
+        if (position<0)
+            throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
         listNode<T> temp = this.first;
-        for (int i = 0; i < position; i++) {
+        int tempPosition=0;
+        while (temp != null && tempPosition != position) {
             temp = temp.getNext();
+            tempPosition++;
 
 
         }
+        if (temp==null)
+            throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
         temp.setValue(val);
-
     }
 
-    public void removeNode(int position) {
-
+    public void removeNode(int position) throws InvalidArgumentException{
+        if (position<0)
+            throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
         listNode<T> temp = this.first;
         if(position==0)
             this.first=temp.getNext();
@@ -184,6 +194,8 @@ public class LinkedList_impl <T> implements ListInterface<T> {
             listNode<T> temp1 = null;
             for (int i = 0; i < position - 1; i++) {
                 temp = temp.getNext();
+                if (temp.getNext()==null)
+                    throw new InvalidArgumentException("ERROR: La posición ingresada no es correcta ");
 
             }
             temp1 = temp.getNext().getNext();

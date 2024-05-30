@@ -1,6 +1,6 @@
 package uy.edu.um.tads;
 
-public class Queue_impl <T> implements QueueInterface<T> {
+public class Queue_impl <T> implements QueueInterface<T>  {
 
     @Override
     public void enqueue(T value) {
