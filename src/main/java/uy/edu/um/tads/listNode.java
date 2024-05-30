@@ -1,4 +1,4 @@
-package uy.edu.um;
+package uy.edu.um.tads;
 import lombok.Getter;
 import lombok.Setter;
 @Setter
